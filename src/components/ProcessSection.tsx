@@ -11,51 +11,55 @@ const steps = [
 
 const ProcessSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section-padding bg-secondary" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+    <section className="py-32 md:py-40 bg-secondary" ref={ref}>
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-20"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1 }}
+          className="mb-24"
         >
-          <span className="text-primary font-body text-sm tracking-[0.2em] uppercase mb-4 block">
-            How We Work
+          <span className="text-primary/60 font-body text-[11px] tracking-[0.3em] uppercase block mb-6">
+            Process
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold">
-            Our <span className="text-gradient-gold">Process</span>
+          <h2 className="font-display text-4xl md:text-[3.5rem] leading-[1.1] font-bold max-w-lg">
+            How we work<span className="text-primary">.</span>
           </h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="absolute left-[24px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+        <div className="grid md:grid-cols-5 gap-0">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.num}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              className="relative group"
+            >
+              {/* Top bar */}
+              <div className="flex items-center mb-8">
+                <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                {i < steps.length - 1 && (
+                  <div className="h-px flex-1 bg-border/30 hidden md:block" />
+                )}
+              </div>
 
-          <div className="space-y-16">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative flex items-center gap-8 md:gap-0 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Dot */}
-                <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 w-2.5 h-2.5 bg-primary rounded-full z-10 shadow-[0_0_12px_hsl(43_72%_52%/0.5)]" />
-
-                {/* Content */}
-                <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                  <span className="text-primary/50 font-body text-xs tracking-widest">{step.num}</span>
-                  <h3 className="font-display text-2xl font-bold mt-1 mb-2">{step.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              <div className="pr-8 md:pr-6">
+                <span className="text-primary/40 font-body text-[11px] tracking-widest block mb-3">
+                  {step.num}
+                </span>
+                <h3 className="font-display text-xl md:text-2xl font-bold mb-3 text-foreground">
+                  {step.title}
+                </h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
