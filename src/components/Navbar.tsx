@@ -70,6 +70,13 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={() => setDark(!dark)}
+            className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            aria-label="Toggle theme"
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
         {/* Mobile toggle */}
