@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
@@ -29,17 +30,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Logo top-left */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute top-8 left-8 z-10"
-      >
-        <span className="font-display text-xl tracking-widest text-foreground uppercase">
-          Catalyst
-        </span>
-      </motion.div>
+      {/* Logo removed - using Navbar now */}
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -69,18 +60,18 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.9 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="px-8 py-4 bg-primary text-primary-foreground font-body font-semibold tracking-wide rounded-sm hover:gold-glow transition-all duration-300 hover:scale-105"
           >
             Start Your Growth
-          </a>
-          <a
-            href="#work"
+          </Link>
+          <Link
+            to="/work"
             className="px-8 py-4 border border-foreground/20 text-foreground font-body font-semibold tracking-wide rounded-sm hover:border-primary/60 transition-all duration-300"
           >
             View Our Work
-          </a>
+          </Link>
         </motion.div>
       </div>
 

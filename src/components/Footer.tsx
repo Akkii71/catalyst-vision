@@ -1,4 +1,5 @@
 import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,10 +11,10 @@ const Footer = () => {
         </div>
 
         <nav className="flex gap-8 font-body text-sm text-muted-foreground">
-          <a href="#about" className="hover:text-primary transition-colors">About</a>
-          <a href="#services" className="hover:text-primary transition-colors">Services</a>
-          <a href="#work" className="hover:text-primary transition-colors">Work</a>
-          <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+          <Link to="/about" className="hover:text-primary transition-colors">About</Link>
+          <Link to="/services" className="hover:text-primary transition-colors">Services</Link>
+          <Link to="/work" className="hover:text-primary transition-colors">Work</Link>
+          <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
         </nav>
 
         <div className="flex gap-5">
