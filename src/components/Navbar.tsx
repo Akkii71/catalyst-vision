@@ -112,6 +112,14 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              <button
+                onClick={() => setDark(!dark)}
+                className="flex items-center gap-2 font-body text-sm tracking-[0.15em] uppercase text-muted-foreground"
+                aria-label="Toggle theme"
+              >
+                {dark ? <Sun size={16} /> : <Moon size={16} />}
+                {dark ? "Light Mode" : "Dark Mode"}
+              </button>
             </div>
           </motion.div>
         )}
